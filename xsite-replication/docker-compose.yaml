@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  mynetwork:
+    driver: bridge
+volumes:
+  xsite-vol-lon:
+  xsite-vol-nyc:
+services:
+  infinispan-server-lon:
+    image: infinispan/server
+    environment:
+      - APP_USER=Titus Bramble
+      - APP_PASS=Shambles
+    ports:
+      - "11222:11222"
+    container_name: infinispan-lon
+    networks:
+      - mynetwork
+    volumes:
+      - xsite-vol-lon:/user-config
+    command: ./opt/infinispan/bin/server.sh -b SITE_LOCAL -c /user-config/infinispan-xsite-LON.xml
+  infinispan-server-nyc:
+      image: infinispan/server
+      environment:
+        - APP_USER=Titus Bramble
+        - APP_PASS=Shambles
+      ports:
+        - "11222:11222"
+      container_name: infinispan-nyc
+      networks:
+        - mynetwork
+      volumes:
+        - xsite-vol-nyc:/user-config
+      command: ./opt/infinispan/bin/server.sh -b SITE_LOCAL -c /user-config/infinispan-xsite-NYC.xml
