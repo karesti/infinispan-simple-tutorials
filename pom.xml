@@ -61,7 +61,10 @@
        <module>jcache</module>
        <module>functional</module>
        <module>spark</module>
-       <module>spring</module>
+       <module>spring-integration/embedded</module>
+       <module>spring-integration/remote</module>
+       <module>spring-integration/session-embedded</module>
+       <module>spring-integration/session-remote</module>
        <module>spring-boot</module>
        <module>spring-boot/embedded</module>
        <module>spring-boot/remote</module>
@@ -86,10 +89,10 @@
        <module>remote-admin-create-cache</module>
        <module>remote-tx</module>
        <module>remote-counter</module>
-        <module>remote-multimap</module>
-        <module>remote-query</module>
-        <module>near-cache</module>
-        <module>remote-continuous-query</module>
-        <module>invalidation-mode</module>
+       <module>remote-multimap</module>
+       <module>remote-query</module>
+       <module>near-cache</module>
+       <module>remote-continuous-query</module>
+       <module>invalidation-mode</module>
     </modules>
 </project>
