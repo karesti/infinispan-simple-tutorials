@@ -22,13 +22,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${version.spring.boot}</version>
+            <version>${version.spring.boot3}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
-            <version>${version.spring.session}</version>
+            <version>${version.spring6.session}</version>
         </dependency>
     </dependencies>
 
@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${version.spring.boot}</version>
+                <version>${version.spring.boot3}</version>
                 <executions>
                     <execution>
                         <goals>

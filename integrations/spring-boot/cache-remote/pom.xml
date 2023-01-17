@@ -15,14 +15,14 @@
     <dependencies>
         <dependency>
             <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-spring-boot-starter-remote</artifactId>
+            <artifactId>infinispan-spring-boot3-starter-remote</artifactId>
             <version>${version.infinispan}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>${version.spring.boot}</version>
+            <version>${version.spring.boot3}</version>
         </dependency>
 
         <dependency>
@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${version.spring.boot}</version>
+            <version>${version.spring.boot3}</version>
         </dependency>
         <dependency>
             <groupId>org.infinispan.protostream</groupId>
@@ -53,7 +53,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${version.spring.boot}</version>
+                <version>${version.spring.boot3}</version>
                 <executions>
                     <execution>
                         <goals>

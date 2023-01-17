@@ -6,11 +6,24 @@
 These code tutorials use {brandname} Server and require at least one running instance.
 ====
 
-.Run Spring examples
+.Run Spring examples for caching
 [source,bash,options="nowrap",subs=attributes+]
 ----
-$ {package_exec}
+$ {package_exec}@spring-caching <1>
+$ {package_exec}@spring-annotations <2>
 ----
+<1> Tests caching
+<2> Tests annotations
+
+.Run Spring examples for session
+
+Build the project
+[source,bash,options="nowrap",subs=attributes+]
+----
+$ {spring_boot_run}
+----
+
+Then navigate to `http://localhost:8080/session` and observe session added to the Infinispan cluster.
 
 .Run Spring Boot examples
 [source,bash,options="nowrap",subs=attributes+]
