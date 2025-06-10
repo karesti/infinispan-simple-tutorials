@@ -1,5 +1,7 @@
 package org.infinispan.tutorial.simple.connect;
 
+import org.infinispan.api.Infinispan;
+import org.infinispan.api.sync.SyncCache;
 import org.infinispan.client.hotrod.RemoteCache;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
@@ -50,44 +52,45 @@ public class TutorialsConnectorHelper {
     * This method illustrates how to connect to a running Infinispan Server with a downloaded
     * distribution or a container.
     *
-    * @return a connected RemoteCacheManager
+    * @return a connected Infinispan
     */
-   public static final RemoteCacheManager connect() {
+   public static final Infinispan connect() {
       // Return the connected cache manager
       return connect(connectionConfig());
    }
 
    public static InfinispanContainer INFINISPAN_CONTAINER;
 
-   public static final RemoteCacheManager connect(ConfigurationBuilder builder) {
-      RemoteCacheManager cacheManager = null;
+   public static final Infinispan connect(ConfigurationBuilder builder) {
+
+      Infinispan infinispan = null;
       try {
-         cacheManager = new RemoteCacheManager(builder.build());
+         infinispan = Infinispan.create(builder.build());
          //ping
-         System.out.println("Get cache names: " + cacheManager.getCacheNames());
+         System.out.println("Get cache names: " + infinispan.sync().caches().names());
       } catch (Exception ex) {
          System.out.println("Unable to connect to a running server in localhost:11222. Try test containers");
-         if (cacheManager != null) {
-            cacheManager.stop();
+         if (infinispan != null) {
+            infinispan.close();
          }
-         cacheManager = null;
+         infinispan = null;
       }
 
-      if (cacheManager == null) {
+      if (infinispan == null) {
          try {
             startInfinispanContainer();
             builder.addServer().host(HOST).port(INFINISPAN_CONTAINER.getMappedPort(SINGLE_PORT));
-            cacheManager = new RemoteCacheManager(builder.build());
+            infinispan = Infinispan.create(builder.build());
             //ping
-            System.out.println("Get cache names: " + cacheManager.getCacheNames());
+            System.out.println("Get cache names: " + infinispan.sync().caches().names());
          } catch (Exception ex) {
             System.out.println("Infinispan Server start with Testcontainers failed. Exit");
             System.exit(0);
          }
       }
-      if (cacheManager != null) {
+      if (infinispan != null) {
          // Clear the cache in case it already exists from a previous running tutorial
-         RemoteCache<Object, Object> testCache = cacheManager.getCache(TUTORIAL_CACHE_NAME);
+         SyncCache<Object, Object> testCache = infinispan.sync().caches().get(TUTORIAL_CACHE_NAME);
          if (testCache != null) {
             testCache.clear();
          } else {
@@ -95,7 +98,7 @@ public class TutorialsConnectorHelper {
          }
       }
       // Return the connected cache manager
-      return cacheManager;
+      return infinispan;
    }
 
    public static InfinispanContainer startInfinispanContainer() {
@@ -136,9 +139,9 @@ public class TutorialsConnectorHelper {
       }
    }
 
-   public static void stop(RemoteCacheManager cacheManager) {
-      if (cacheManager != null){
-         cacheManager.stop();
+   public static void stop(Infinispan infinispan) {
+      if (infinispan != null){
+         infinispan.close();
          stopInfinispanContainer();
       }
    }

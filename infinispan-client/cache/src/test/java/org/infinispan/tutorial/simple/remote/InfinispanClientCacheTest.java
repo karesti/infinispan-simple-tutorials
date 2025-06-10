@@ -7,25 +7,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class InfinispanRemoteCacheTest {
+public class InfinispanClientCacheTest {
 
     @BeforeAll
     public static void start() {
-        InfinispanRemoteCache.connectToInfinispan();
+        InfinispanClientCache.connectToInfinispan();
     }
 
     @AfterAll
     public static void stop() {
-        InfinispanRemoteCache.disconnect();
+        InfinispanClientCache.disconnect();
     }
 
     @Test
     public void testRemoteCache() {
-        assertNotNull(InfinispanRemoteCache.cache);
+        assertNotNull(InfinispanClientCache.cache);
 
-        InfinispanRemoteCache.manipulateCache();
+        InfinispanClientCache.manipulateCache();
 
-        assertEquals("value", InfinispanRemoteCache.cache.get("key"));
+        assertEquals("value", InfinispanClientCache.cache.get("key"));
     }
 
 }
