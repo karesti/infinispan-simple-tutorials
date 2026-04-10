@@ -1,0 +1,11 @@
+<infinispan>
+    <server>
+        <endpoints>
+            <endpoint socket-binding="default" security-realm="default">
+                <rest-connector>
+                    <authentication mechanisms="BASIC"/>
+                </rest-connector>
+            </endpoint>
+        </endpoints>
+    </server>
+</infinispan>

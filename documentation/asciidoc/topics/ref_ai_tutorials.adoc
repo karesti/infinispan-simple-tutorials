@@ -1,0 +1,21 @@
+[id='ai-tutorials_{context}']
+= AI tutorials
+
+[%header,cols=2*]
+|===
+|Tutorial link
+|Description
+
+|link:{repository}/infinispan-ai/langchain4j[LangChain4j]
+|Demonstrates how to use {brandname} as a vector store with LangChain4j for embedding storage and similarity search.
+
+|link:{repository}/infinispan-ai/langchain4j-quarkus[LangChain4j with Quarkus]
+|Demonstrates how to use the {brandname} LangChain4j integration in a Quarkus application.
+
+|link:{repository}/infinispan-ai/spring-ai[Spring AI]
+|Demonstrates how to use {brandname} as a vector store with Spring AI for embedding storage and similarity search.
+
+|link:{repository}/infinispan-ai/mcp-server[MCP Server]
+|Demonstrates how to enable and use the {brandname} MCP (Model Context Protocol) endpoint to interact with caches, counters, and schemas through AI assistants.
+
+|===

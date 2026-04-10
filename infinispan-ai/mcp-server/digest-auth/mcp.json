@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "infinispan": {
+      "type": "http",
+      "url": "http://localhost:11222/rest/v3/mcp",
+      "headersHelper": "python3 get-mcp-headers.py"
+    }
+  }
+}
